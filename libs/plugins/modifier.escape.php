@@ -97,9 +97,13 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
         case 'urlpathinfo':
             return str_replace('%2F', '/', rawurlencode($string));
 
-        case 'quotes':
+        case 'quote':
             // escape unescaped single quotes
             return preg_replace("%(?<!\\\\)'%", "\\'", $string);
+
+        case 'quotes':
+            // escape unescaped double quotes 
+            return  str_replace('"','\\"',$string);
 
         case 'hex':
             // escape every byte into hex
